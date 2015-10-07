@@ -1,0 +1,9 @@
+[1.0] 1. Remove autoscaling for large images.
+[1.0] 2. Only show four tiles if they're really big.
+[2.0] 3. Add "render sphere" button to render the texture on a sphere.
+   -- Add slider to affect number of times texture is tiled on sphere.
+[2.0] 4. Add "render cube" button to render the texture on a cube.
+   -- Add slider to affect number of times texture is tiled on cube.
+[2.0] 5. Use MilkShape 3D format for rendering.
+   -- Allow rotation of object using mouse.
+[1.0] 6. Update help file to only show things relevant to this app.

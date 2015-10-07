@@ -1,0 +1,28 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BDE05414-0FDD-4FD4-834C-584BD83D48F4}"
+	ProjectSection(SolutionItems) = preProject
+		TODO.txt = TODO.txt
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuickTileViewer", "QuickTileviewer.vcproj", "{04260746-3E1D-4369-B8AA-61D13D121427}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04260746-3E1D-4369-B8AA-61D13D121427}.Debug|Win32.ActiveCfg = Debug|Win32
+		{04260746-3E1D-4369-B8AA-61D13D121427}.Debug|Win32.Build.0 = Debug|Win32
+		{04260746-3E1D-4369-B8AA-61D13D121427}.Release|Win32.ActiveCfg = DemoDebug|Win32
+		{04260746-3E1D-4369-B8AA-61D13D121427}.Release|Win32.Build.0 = DemoDebug|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
