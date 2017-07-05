@@ -24,16 +24,6 @@
 #include "wx/wx.h"
 #endif
 
-#include <wx/apptrait.h>
-#if wxUSE_STACKWALKER && defined( __WXDEBUG__ )
-// silly workaround for the link error with debug configuration:
-// \src\common\appbase.cpp
-wxString wxAppTraitsBase::GetAssertStackTrace()
-{
-   return wxT("");
-}
-#endif
-
 #include "PixelSwapperApp.h"
 
 DECLARE_APP(ExtractoSplitterApp)
