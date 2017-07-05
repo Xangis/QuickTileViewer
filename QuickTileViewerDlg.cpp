@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        PixelSwapperDlg.cpp
+// Name:        QuickTileViewerDlg.cpp
 // Purpose:     
 // Author:      Jason Champion
 // Modified by: 
@@ -10,7 +10,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #if defined(__GNUG__) && !defined(NO_GCC_PRAGMA)
-#pragma implementation "PixelSwapperDlg.h"
+#pragma implementation "QuickTileViewerDlg.h"
 #endif
 
 // For compilers that support precompilation, includes "wx/wx.h".
@@ -35,56 +35,56 @@
 #include "wx/metafile.h"
 #include "wx/accel.h"
 #include "wx/stdpaths.h"
-#include "PixelSwapperDlg.h"
-#include "PixelSwapperPrint.h"
+#include "QuickTileViewerDlg.h"
+#include "QuickTileViewerPrint.h"
 #include <algorithm>
 
 #if !wxUSE_PRINTING_ARCHITECTURE
 #error "You must set wxUSE_PRINTING_ARCHITECTURE to 1 in setup.h, and recompile the library."
 #endif
 
-IMPLEMENT_DYNAMIC_CLASS( PixelSwapperDlg, wxFrame )
+IMPLEMENT_DYNAMIC_CLASS( QuickTileViewerDlg, wxFrame )
 
-BEGIN_EVENT_TABLE( PixelSwapperDlg, wxFrame )
-    EVT_CLOSE( PixelSwapperDlg::OnCloseWindow )
-    EVT_BUTTON( ID_BTN_MIRROR, PixelSwapperDlg::OnBtnMirrorClick )
-    EVT_BUTTON( ID_BTN_RESCALE, PixelSwapperDlg::OnBtnRescaleClick )
-    EVT_BUTTON( ID_BTN_ROTATE, PixelSwapperDlg::OnBtnRotateClick )
-    EVT_BUTTON( ID_BTN_BROWSEOUTPUT, PixelSwapperDlg::OnBtnBrowseoutputClick )
-	EVT_BUTTON( ID_BTN_REVERT, PixelSwapperDlg::OnBtnLoadClick )
-    EVT_TEXT( ID_TXT_THRESHOLD, PixelSwapperDlg::OnTxtThresholdUpdated )
-//EVT_MENU( ID_FILE_SAVE, PixelSwapperDlg::OnBtnSaveClick )
-//EVT_MENU( ID_FILE_SAVE_AS, PixelSwapperDlg::OnBtnSaveAsClick )
-	EVT_MENU( ID_FILE_LOAD, PixelSwapperDlg::OnBtnBrowseinputClick )
-	EVT_MENU( ID_FILE_REVERT, PixelSwapperDlg::OnBtnLoadClick )
-	EVT_MENU( ID_TRANSFORM_ROTATE_RIGHT, PixelSwapperDlg::OnBtnRotateClick )
-	EVT_MENU( ID_TRANSFORM_ROTATE_LEFT, PixelSwapperDlg::OnBtnRotateRightClick )
-	EVT_MENU( ID_TRANSFORM_MIRROR_VERTICAL, PixelSwapperDlg::OnBtnMirrorRightClick )
-	EVT_MENU( ID_TRANSFORM_MIRROR_HORIZONTAL, PixelSwapperDlg::OnBtnMirrorClick )
-	EVT_MENU( ID_TRANSFORM_RESCALE_SMALLER, PixelSwapperDlg::OnBtnRescaleClick )
-	EVT_MENU( ID_TRANSFORM_RESCALE_LARGER, PixelSwapperDlg::OnBtnRescaleRightClick )
-	EVT_MENU( ID_HELP_ABOUT, PixelSwapperDlg::OnBtnAboutClick )
-	EVT_MENU( ID_HELP_HELP, PixelSwapperDlg::OnBtnHelpClick )
-	EVT_MENU( ID_FILE_PASTE, PixelSwapperDlg::OnBtnFilePaste )
-    EVT_MENU( ID_FILE_PRINT, PixelSwapperDlg::OnPrint )
-    EVT_MENU( ID_FILE_PRINT_PREVIEW, PixelSwapperDlg::OnPrintPreview )
-    EVT_MENU( ID_FILE_PAGE_SETUP, PixelSwapperDlg::OnPageSetup )
+BEGIN_EVENT_TABLE( QuickTileViewerDlg, wxFrame )
+    EVT_CLOSE( QuickTileViewerDlg::OnCloseWindow )
+    EVT_BUTTON( ID_BTN_MIRROR, QuickTileViewerDlg::OnBtnMirrorClick )
+    EVT_BUTTON( ID_BTN_RESCALE, QuickTileViewerDlg::OnBtnRescaleClick )
+    EVT_BUTTON( ID_BTN_ROTATE, QuickTileViewerDlg::OnBtnRotateClick )
+    EVT_BUTTON( ID_BTN_BROWSEOUTPUT, QuickTileViewerDlg::OnBtnBrowseoutputClick )
+	EVT_BUTTON( ID_BTN_REVERT, QuickTileViewerDlg::OnBtnLoadClick )
+    EVT_TEXT( ID_TXT_THRESHOLD, QuickTileViewerDlg::OnTxtThresholdUpdated )
+//EVT_MENU( ID_FILE_SAVE, QuickTileViewerDlg::OnBtnSaveClick )
+//EVT_MENU( ID_FILE_SAVE_AS, QuickTileViewerDlg::OnBtnSaveAsClick )
+	EVT_MENU( ID_FILE_LOAD, QuickTileViewerDlg::OnBtnBrowseinputClick )
+	EVT_MENU( ID_FILE_REVERT, QuickTileViewerDlg::OnBtnLoadClick )
+	EVT_MENU( ID_TRANSFORM_ROTATE_RIGHT, QuickTileViewerDlg::OnBtnRotateClick )
+	EVT_MENU( ID_TRANSFORM_ROTATE_LEFT, QuickTileViewerDlg::OnBtnRotateRightClick )
+	EVT_MENU( ID_TRANSFORM_MIRROR_VERTICAL, QuickTileViewerDlg::OnBtnMirrorRightClick )
+	EVT_MENU( ID_TRANSFORM_MIRROR_HORIZONTAL, QuickTileViewerDlg::OnBtnMirrorClick )
+	EVT_MENU( ID_TRANSFORM_RESCALE_SMALLER, QuickTileViewerDlg::OnBtnRescaleClick )
+	EVT_MENU( ID_TRANSFORM_RESCALE_LARGER, QuickTileViewerDlg::OnBtnRescaleRightClick )
+	EVT_MENU( ID_HELP_ABOUT, QuickTileViewerDlg::OnBtnAboutClick )
+	EVT_MENU( ID_HELP_HELP, QuickTileViewerDlg::OnBtnHelpClick )
+	EVT_MENU( ID_FILE_PASTE, QuickTileViewerDlg::OnBtnFilePaste )
+    EVT_MENU( ID_FILE_PRINT, QuickTileViewerDlg::OnPrint )
+    EVT_MENU( ID_FILE_PRINT_PREVIEW, QuickTileViewerDlg::OnPrintPreview )
+    EVT_MENU( ID_FILE_PAGE_SETUP, QuickTileViewerDlg::OnPageSetup )
 END_EVENT_TABLE()
 
-PixelSwapperDlg::PixelSwapperDlg( )
+QuickTileViewerDlg::QuickTileViewerDlg( )
 {
 }
 
-PixelSwapperDlg::~PixelSwapperDlg()
+QuickTileViewerDlg::~QuickTileViewerDlg()
 {
 }
 
-PixelSwapperDlg::PixelSwapperDlg( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
+QuickTileViewerDlg::QuickTileViewerDlg( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Create(parent, id, caption, pos, size, style);
 }
 
-bool PixelSwapperDlg::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
+bool QuickTileViewerDlg::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     _btnMirror = NULL;
     _btnRotate = NULL;
@@ -121,7 +121,7 @@ bool PixelSwapperDlg::Create( wxWindow* parent, wxWindowID id, const wxString& c
 	{
 		SetIcon(_icon);
 	}
-	_dropTarget = new PixelSwapperDropTarget(this);
+	_dropTarget = new QuickTileViewerDropTarget(this);
 	wxWindow::SetDropTarget( _dropTarget );
     GetSizer()->Fit(this);
     GetSizer()->SetSizeHints(this);
@@ -133,7 +133,7 @@ bool PixelSwapperDlg::Create( wxWindow* parent, wxWindowID id, const wxString& c
 	return true;
 }
 
-void PixelSwapperDlg::CreateControls()
+void QuickTileViewerDlg::CreateControls()
 {    
     _mainFrame = this;
 	// Set up menus
@@ -175,18 +175,18 @@ void PixelSwapperDlg::CreateControls()
 
     _btnMirror = new wxButton( itemDialog1, ID_BTN_MIRROR, _("Mirror"), wxDefaultPosition, wxSize( 60, 24 ), 0 );
     itemBoxSizer3->Add(_btnMirror, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-	_btnMirror->Connect(ID_BTN_MIRROR, wxEVT_RIGHT_DOWN, wxMouseEventHandler(PixelSwapperDlg::OnBtnMirrorRightClick), NULL, this);
+	_btnMirror->Connect(ID_BTN_MIRROR, wxEVT_RIGHT_DOWN, wxMouseEventHandler(QuickTileViewerDlg::OnBtnMirrorRightClick), NULL, this);
 
     _btnRescale = new wxButton( itemDialog1, ID_BTN_RESCALE, _("Rescale"), wxDefaultPosition, wxSize( 60, 24 ), 0 );
     itemBoxSizer3->Add(_btnRescale, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-	_btnRescale->Connect(ID_BTN_RESCALE, wxEVT_RIGHT_DOWN, wxMouseEventHandler(PixelSwapperDlg::OnBtnRescaleRightClick), NULL, this);
+	_btnRescale->Connect(ID_BTN_RESCALE, wxEVT_RIGHT_DOWN, wxMouseEventHandler(QuickTileViewerDlg::OnBtnRescaleRightClick), NULL, this);
 
     _btnRevert = new wxButton( itemDialog1, ID_BTN_REVERT, _("Revert"), wxDefaultPosition, wxSize( 60, 24 ), 0 );
     itemBoxSizer3->Add(_btnRevert, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
 
     _btnRotate = new wxButton( itemDialog1, ID_BTN_ROTATE, _("Rotate"), wxDefaultPosition, wxSize( 60, 24 ), 0 );
     itemBoxSizer3->Add(_btnRotate, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-	_btnRotate->Connect(ID_BTN_ROTATE, wxEVT_RIGHT_DOWN, wxMouseEventHandler(PixelSwapperDlg::OnBtnRotateRightClick), NULL, this);
+	_btnRotate->Connect(ID_BTN_ROTATE, wxEVT_RIGHT_DOWN, wxMouseEventHandler(QuickTileViewerDlg::OnBtnRotateRightClick), NULL, this);
 
     wxGridSizer* sizerA = new wxGridSizer(3,3,0,0);
     for( int count  = 0; count < 9; count++ )
@@ -219,31 +219,31 @@ void PixelSwapperDlg::CreateControls()
 	itemSizer1->Add(itemDialog1, 1, wxALL|wxGROW, 0);
 }
 
-bool PixelSwapperDlg::ShowToolTips()
+bool QuickTileViewerDlg::ShowToolTips()
 {
     return true;
 }
 
-wxBitmap PixelSwapperDlg::GetBitmapResource( const wxString& name )
+wxBitmap QuickTileViewerDlg::GetBitmapResource( const wxString& name )
 {
     // Bitmap retrieval
     wxUnusedVar(name);
     return wxNullBitmap;
 }
 
-wxIcon PixelSwapperDlg::GetIconResource( const wxString& name )
+wxIcon QuickTileViewerDlg::GetIconResource( const wxString& name )
 {
     // Icon retrieval
     wxUnusedVar(name);
     return wxNullIcon;
 }
 
-void PixelSwapperDlg::OnTxtThresholdUpdated( wxCommandEvent& event )
+void QuickTileViewerDlg::OnTxtThresholdUpdated( wxCommandEvent& event )
 {
     event.Skip(false);
 }
 
-void PixelSwapperDlg::OnBtnBrowseinputClick( wxCommandEvent& event )
+void QuickTileViewerDlg::OnBtnBrowseinputClick( wxCommandEvent& event )
 {
 	wxFileDialog fdialog( NULL, _T("Choose a file"), _T("."), _T(""), _T("All Supported File Types|*.bmp;*.gif;*.ico;*.jpg;*.jpeg;*.pcx;*.png;*.tga;*.tif;*.tiff;*.xpm;*.BMP;*.GIF;*.ICO;*.JPG;*.JPEG;*.PCX;*.PNG;*.TGA;*.TIF;*.TIFF;*.XPM|BMP Files (*.bmp)|*.bmp;*.BMP|GIF Files (*.gif)|*.gif;*.GIF|Icon Files (*.ico)|*.ico;*.ICO|JPEG Files (*.jpg,*.jpeg)|*.jpg;*.jpeg;*.JPG;*.JPEG|PCX Files (*.pcx)|*.pcx;*.PCX|PNG Files (*.png)|*.png;*.PNG|TGA Files (*.tga)|*.tga;*.TGA|TIF Files (*.tif,*.tiff) |*.tif;*.tiff;*.TIF;*.TIFF|X Pixmap Files (*.xpm)|*.xpm;*.XPM||"), wxFD_OPEN|wxFD_CHANGE_DIR );
 	wxString fileName;
@@ -258,7 +258,7 @@ void PixelSwapperDlg::OnBtnBrowseinputClick( wxCommandEvent& event )
     event.Skip(false);
 }
 
-void PixelSwapperDlg::OnBtnBrowseoutputClick( wxCommandEvent& event )
+void QuickTileViewerDlg::OnBtnBrowseoutputClick( wxCommandEvent& event )
 {
 	wxFileDialog fdialog( NULL, _T("Choose a file"), _T("."), _T(""), _T("BMP and GIF files (*.bmp;*.gif)|*.bmp;*.gif|BMP Files (*.bmp)|*.bmp|Icon Files (*.ico)|*.gif|JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|TIFF Files (*.tif) |*.tif|X Pixmap Files (*.xpm)|*.xpm|"), wxFD_SAVE|wxFD_CHANGE_DIR );
 	wxString fileName;
@@ -271,7 +271,7 @@ void PixelSwapperDlg::OnBtnBrowseoutputClick( wxCommandEvent& event )
     event.Skip(false); 
 }
 
-void PixelSwapperDlg::OnBtnMirrorClick( wxCommandEvent& event )
+void QuickTileViewerDlg::OnBtnMirrorClick( wxCommandEvent& event )
 {
 	if( _currentImage.Ok() )
 	{
@@ -281,7 +281,7 @@ void PixelSwapperDlg::OnBtnMirrorClick( wxCommandEvent& event )
     event.Skip(false);
 }
 
-void PixelSwapperDlg::OnBtnMirrorRightClick( wxMouseEvent& event )
+void QuickTileViewerDlg::OnBtnMirrorRightClick( wxMouseEvent& event )
 {
 	if( _currentImage.Ok() )
 	{
@@ -291,7 +291,7 @@ void PixelSwapperDlg::OnBtnMirrorRightClick( wxMouseEvent& event )
     event.Skip(false);
 }
 
-void PixelSwapperDlg::OnBtnRescaleClick( wxCommandEvent& event )
+void QuickTileViewerDlg::OnBtnRescaleClick( wxCommandEvent& event )
 {
 	if( _currentImage.Ok() )
 	{
@@ -302,7 +302,7 @@ void PixelSwapperDlg::OnBtnRescaleClick( wxCommandEvent& event )
 	event.Skip(false);
 }
 
-void PixelSwapperDlg::OnBtnRescaleRightClick( wxMouseEvent& event )
+void QuickTileViewerDlg::OnBtnRescaleRightClick( wxMouseEvent& event )
 {
 	if( _currentImage.Ok() )
 	{
@@ -313,7 +313,7 @@ void PixelSwapperDlg::OnBtnRescaleRightClick( wxMouseEvent& event )
 	event.Skip(false);
 }
 
-void PixelSwapperDlg::OnBtnAboutClick( wxCommandEvent& event )
+void QuickTileViewerDlg::OnBtnAboutClick( wxCommandEvent& event )
 {
 	// Show about box.
     wxAboutDialogInfo info;
@@ -330,13 +330,13 @@ void PixelSwapperDlg::OnBtnAboutClick( wxCommandEvent& event )
     event.Skip(false);
 }
 
-void PixelSwapperDlg::OnBtnHelpClick( wxCommandEvent& event )
+void QuickTileViewerDlg::OnBtnHelpClick( wxCommandEvent& event )
 {
 	_helpCtrl->DisplayContents();
     event.Skip(false);
 }
 
-void PixelSwapperDlg::OnBtnFilePaste( wxCommandEvent& event )
+void QuickTileViewerDlg::OnBtnFilePaste( wxCommandEvent& event )
 {
 	wxBitmapDataObject data;
 	wxTheClipboard->Open();
@@ -353,7 +353,7 @@ void PixelSwapperDlg::OnBtnFilePaste( wxCommandEvent& event )
 	}
 }
 
-void PixelSwapperDlg::ProcessResize(int x, int y)
+void QuickTileViewerDlg::ProcessResize(int x, int y)
 {
         if( x == 0 || y == 0 )
         {
@@ -366,7 +366,7 @@ void PixelSwapperDlg::ProcessResize(int x, int y)
         }
 }
 
-void PixelSwapperDlg::OnBtnRotateClick( wxCommandEvent& event )
+void QuickTileViewerDlg::OnBtnRotateClick( wxCommandEvent& event )
 {
 	if( _currentImage.Ok() )
 	{
@@ -376,7 +376,7 @@ void PixelSwapperDlg::OnBtnRotateClick( wxCommandEvent& event )
     event.Skip(false);
 }
 
-void PixelSwapperDlg::OnBtnRotateRightClick( wxMouseEvent& event )
+void QuickTileViewerDlg::OnBtnRotateRightClick( wxMouseEvent& event )
 {
 	if( _currentImage.Ok() )
 	{
@@ -386,14 +386,14 @@ void PixelSwapperDlg::OnBtnRotateRightClick( wxMouseEvent& event )
     event.Skip(false);
 }
 
-void PixelSwapperDlg::LoadFile(wxString filename )
+void QuickTileViewerDlg::LoadFile(wxString filename )
 {
 	_statusBar->SetStatusText( filename, 0 );
 	wxCommandEvent nullEvent;
 	OnBtnLoadClick( nullEvent );
 }
 
-void PixelSwapperDlg::OnBtnLoadClick( wxCommandEvent& event )
+void QuickTileViewerDlg::OnBtnLoadClick( wxCommandEvent& event )
 {
     wxString filename = _statusBar->GetStatusText( 0 );
     _currentImage.LoadFile( filename, wxBITMAP_TYPE_ANY );
@@ -405,13 +405,13 @@ void PixelSwapperDlg::OnBtnLoadClick( wxCommandEvent& event )
     event.Skip(false);
 }
 
-void PixelSwapperDlg::OnCloseWindow( wxCloseEvent& event )
+void QuickTileViewerDlg::OnCloseWindow( wxCloseEvent& event )
 {
 	Destroy();
     event.Skip(false);
 }
 
-bool PixelSwapperDlg::OnDropFiles(const wxString& filename)
+bool QuickTileViewerDlg::OnDropFiles(const wxString& filename)
 {
 	_currentImage.LoadFile( filename, wxBITMAP_TYPE_ANY );
     if( _currentImage.Ok() )
@@ -422,7 +422,7 @@ bool PixelSwapperDlg::OnDropFiles(const wxString& filename)
 	return true;
 }
 
-bool PixelSwapperDropTarget::OnDropFiles(wxCoord x, wxCoord y, const wxArrayString& filenames)
+bool QuickTileViewerDropTarget::OnDropFiles(wxCoord x, wxCoord y, const wxArrayString& filenames)
 {
 	if( filenames.GetCount() < 1 || !_dialog )
 	{
@@ -432,19 +432,19 @@ bool PixelSwapperDropTarget::OnDropFiles(wxCoord x, wxCoord y, const wxArrayStri
 	return _dialog->OnDropFiles( filenames[0] );
 }
 
-void PixelSwapperDlg::SetStatusSize( int width, int height )
+void QuickTileViewerDlg::SetStatusSize( int width, int height )
 {
 	_statusBar->SetStatusText( wxString::Format("Width: %d", width ), 1 );
 	_statusBar->SetStatusText( wxString::Format("Height: %d", height ), 2 );
 	_statusBar->SetStatusText( wxString::Format("%d%%", (int)(_scaleFactor * 100 )), 3);
 }
 
-void PixelSwapperDlg::OnPrint(wxCommandEvent& WXUNUSED(event))
+void QuickTileViewerDlg::OnPrint(wxCommandEvent& WXUNUSED(event))
 {
     wxPrintDialogData printDialogData(* _printData);
 
     wxPrinter printer(& printDialogData);
-    PixelSwapperPrint printout(_T("PixelSwapper Printout"));
+    QuickTileViewerPrint printout(_T("QuickTileViewer Printout"));
     if( _currentImage.Ok() )
     {
         printout.SetBitmap(wxBitmap(_currentImage));
@@ -462,12 +462,12 @@ void PixelSwapperDlg::OnPrint(wxCommandEvent& WXUNUSED(event))
     }
 }
 
-void PixelSwapperDlg::OnPrintPreview(wxCommandEvent& WXUNUSED(event))
+void QuickTileViewerDlg::OnPrintPreview(wxCommandEvent& WXUNUSED(event))
 {
     // Pass two printout objects: for preview, and possible printing.
     wxPrintDialogData printDialogData(* _printData);
-    PixelSwapperPrint* printoutForPreview = new PixelSwapperPrint;
-    PixelSwapperPrint* printoutForPrint = new PixelSwapperPrint;
+    QuickTileViewerPrint* printoutForPreview = new QuickTileViewerPrint;
+    QuickTileViewerPrint* printoutForPrint = new QuickTileViewerPrint;
     if( _currentImage.Ok() )
     {
         printoutForPreview->SetBitmap(wxBitmap(_currentImage));
@@ -487,7 +487,7 @@ void PixelSwapperDlg::OnPrintPreview(wxCommandEvent& WXUNUSED(event))
     frame->Show();
 }
 
-void PixelSwapperDlg::OnPageSetup(wxCommandEvent& WXUNUSED(event))
+void QuickTileViewerDlg::OnPageSetup(wxCommandEvent& WXUNUSED(event))
 {
     wxPageSetupDialog pageSetupDialog(this, _pageSetupData);
 
@@ -497,7 +497,7 @@ void PixelSwapperDlg::OnPageSetup(wxCommandEvent& WXUNUSED(event))
     (*_pageSetupData) = pageSetupDialog.GetPageSetupData();
 }
 
-void PixelSwapperDlg::PlaceImageInWindow()
+void QuickTileViewerDlg::PlaceImageInWindow()
 {
     if( _currentImage.Ok() )
     {

@@ -1,14 +1,14 @@
-#ifndef _PIXELSWAPPER_PRINT_H_
-#define _PIXELSWAPPER_PRINT_H_
+#ifndef _QuickTileViewer_PRINT_H_
+#define _QuickTileViewer_PRINT_H_
 
 #include "wx/wx.h"
 #include "wx/print.h"
 #include "wx/printdlg.h"
 
-class PixelSwapperPrint: public wxPrintout
+class QuickTileViewerPrint: public wxPrintout
 {
  public:
-  PixelSwapperPrint(const wxChar *title = _("QuickTileViewer Printout")):wxPrintout(title) {}
+  QuickTileViewerPrint(const wxChar *title = _("QuickTileViewer Printout")):wxPrintout(title) {}
   bool OnPrintPage(int page);
   bool HasPage(int page);
   bool OnBeginDocument(int startPage, int endPage);

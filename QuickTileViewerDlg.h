@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        PixelSwapperDlg.h
+// Name:        QuickTileViewerDlg.h
 // Purpose:     
 // Author:      Jason Champion
 // Modified by: 
@@ -9,22 +9,22 @@
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
-#ifndef _PIXELSWAPPERDLG_H_
-#define _PIXELSWAPPERDLG_H_
+#ifndef _QuickTileViewerDLG_H_
+#define _QuickTileViewerDLG_H_
 
 #if defined(__GNUG__) && !defined(NO_GCC_PRAGMA)
-#pragma interface "PixelSwapperDlg.h"
+#pragma interface "QuickTileViewerDlg.h"
 #endif
 
 #include "wx/dnd.h"
 #include "wx/html/helpctrl.h"
 
-#define ID_PIXELSWAPPER_DIALOG 10000
-#define SYMBOL_PIXELSWAPPERDLG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxMINIMIZE_BOX|wxMAXIMIZE_BOX
-#define SYMBOL_PIXELSWAPPERDLG_TITLE _("Quick Tile Viewer")
-#define SYMBOL_PIXELSWAPPERDLG_IDNAME ID_PIXELSWAPPER_DIALOG
-#define SYMBOL_PIXELSWAPPERDLG_SIZE wxSize(400, 300)
-#define SYMBOL_PIXELSWAPPERDLG_POSITION wxPoint( 1, 1 )
+#define ID_QuickTileViewer_DIALOG 10000
+#define SYMBOL_QUICKTILEVIEWERDLG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxMINIMIZE_BOX|wxMAXIMIZE_BOX
+#define SYMBOL_QUICKTILEVIEWERDLG_TITLE _("Quick Tile Viewer")
+#define SYMBOL_QUICKTILEVIEWERDLG_IDNAME ID_QuickTileViewer_DIALOG
+#define SYMBOL_QUICKTILEVIEWERDLG_SIZE wxSize(400, 300)
+#define SYMBOL_QUICKTILEVIEWERDLG_POSITION wxPoint( 1, 1 )
 #define ID_TXT_THRESHOLD 10001
 #define ID_TXT_OUTPUTFILE 10002
 #define ID_BTN_MIRROR 10003
@@ -64,31 +64,31 @@
 #define wxCLOSE_BOX 0x1000
 #endif
 
-class PixelSwapperDlg;
+class QuickTileViewerDlg;
 
-class PixelSwapperDropTarget: public wxFileDropTarget
+class QuickTileViewerDropTarget: public wxFileDropTarget
 {
 public:
-	PixelSwapperDropTarget( PixelSwapperDlg* dialog ) { _dialog = dialog; }
-	virtual ~PixelSwapperDropTarget() {}
+	QuickTileViewerDropTarget( QuickTileViewerDlg* dialog ) { _dialog = dialog; }
+	virtual ~QuickTileViewerDropTarget() {}
 	virtual bool OnDropFiles(wxCoord x, wxCoord y, const wxArrayString& filenames);
 private:
-	PixelSwapperDlg* _dialog;
+	QuickTileViewerDlg* _dialog;
 };
 
-class PixelSwapperDlg: public wxFrame
+class QuickTileViewerDlg: public wxFrame
 {    
-    DECLARE_DYNAMIC_CLASS( PixelSwapperDlg )
+    DECLARE_DYNAMIC_CLASS( QuickTileViewerDlg )
     DECLARE_EVENT_TABLE()
 
 public:
     /// Constructors
-    PixelSwapperDlg( );
-    virtual ~PixelSwapperDlg();
-    PixelSwapperDlg( wxWindow* parent, wxWindowID id = SYMBOL_PIXELSWAPPERDLG_IDNAME, const wxString& caption = SYMBOL_PIXELSWAPPERDLG_TITLE, const wxPoint& pos = SYMBOL_PIXELSWAPPERDLG_POSITION, const wxSize& size = SYMBOL_PIXELSWAPPERDLG_SIZE, long style = SYMBOL_PIXELSWAPPERDLG_STYLE );
+    QuickTileViewerDlg( );
+    virtual ~QuickTileViewerDlg();
+    QuickTileViewerDlg( wxWindow* parent, wxWindowID id = SYMBOL_QUICKTILEVIEWERDLG_IDNAME, const wxString& caption = SYMBOL_QUICKTILEVIEWERDLG_TITLE, const wxPoint& pos = SYMBOL_QUICKTILEVIEWERDLG_POSITION, const wxSize& size = SYMBOL_QUICKTILEVIEWERDLG_SIZE, long style = SYMBOL_QUICKTILEVIEWERDLG_STYLE );
 
     /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_PIXELSWAPPERDLG_IDNAME, const wxString& caption = SYMBOL_PIXELSWAPPERDLG_TITLE, const wxPoint& pos = SYMBOL_PIXELSWAPPERDLG_POSITION, const wxSize& size = SYMBOL_PIXELSWAPPERDLG_SIZE, long style = SYMBOL_PIXELSWAPPERDLG_STYLE );
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_QUICKTILEVIEWERDLG_IDNAME, const wxString& caption = SYMBOL_QUICKTILEVIEWERDLG_TITLE, const wxPoint& pos = SYMBOL_QUICKTILEVIEWERDLG_POSITION, const wxSize& size = SYMBOL_QUICKTILEVIEWERDLG_SIZE, long style = SYMBOL_QUICKTILEVIEWERDLG_STYLE );
 
     /// Creates the controls and sizers
     void CreateControls();
@@ -137,7 +137,7 @@ private:
     wxStaticBitmap* _bmpImage[9]; // Represents the tiles.
     wxSizer* _mainSizer;
     wxButton* _btnLoad;
-	PixelSwapperDropTarget* _dropTarget;
+	QuickTileViewerDropTarget* _dropTarget;
     wxFrame* _mainFrame;
     wxPanel* _mainPanel;
     wxMenuBar* _mainMenu;
@@ -153,4 +153,4 @@ private:
 };
 
 #endif
-    // _PIXELSWAPPERDLG_H_
+    // _QuickTileViewerDLG_H_

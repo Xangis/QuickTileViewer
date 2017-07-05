@@ -25,7 +25,7 @@
 #endif
 
 #include "ResizeDlg.h"
-#include "PixelSwapperDlg.h"
+#include "QuickTileViewerDlg.h"
 
 IMPLEMENT_DYNAMIC_CLASS( ResizeDlg, wxDialog )
 
@@ -66,7 +66,7 @@ bool ResizeDlg::Create( wxWindow* parent, wxWindowID id, const wxString& caption
     GetSizer()->Fit(this);
     GetSizer()->SetSizeHints(this);
     Centre();
-	_mainDlg = (PixelSwapperDlg*)parent;
+	_mainDlg = (QuickTileViewerDlg*)parent;
     return true;
 }
 

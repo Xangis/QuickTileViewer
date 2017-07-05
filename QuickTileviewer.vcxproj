@@ -109,14 +109,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="PixelSwapperApp.cpp" />
-    <ClCompile Include="PixelSwapperDlg.cpp" />
-    <ClCompile Include="PixelSwapperPrint.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="PixelSwapperApp.h" />
-    <ClInclude Include="PixelSwapperDlg.h" />
-    <ClInclude Include="PixelSwapperPrint.h" />
+    <ClInclude Include="QuickTileViewerApp.h" />
+    <ClInclude Include="QuickTileViewerDlg.h" />
+    <ClInclude Include="QuickTileViewerPrint.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +133,11 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ExtractoSplitter.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="QuickTileViewerApp.cpp" />
+    <ClCompile Include="QuickTileViewerDlg.cpp" />
+    <ClCompile Include="QuickTileViewerPrint.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

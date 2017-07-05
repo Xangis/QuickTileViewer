@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        PixelSwapperApp.h
+// Name:        QuickTileViewerApp.h
 // Purpose:     
 // Author:      Jason Champion
 // Modified by: 
@@ -17,7 +17,7 @@
 #endif
 
 #include "wx/image.h"
-#include "PixelSwapperDlg.h"
+#include "QuickTileViewerDlg.h"
 
 class ExtractoSplitterApp: public wxApp
 {    

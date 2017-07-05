@@ -6,7 +6,7 @@ WX_CONFIG := wx-config
 PROGRAM = QuickTileViewer
 
 # Object files
-OBJECTS = AboutDlg.o PixelSwapperApp.o PixelSwapperPrint.o ResizeDlg.o PixelSwapperDlg.o wxSelectableBitmap.o
+OBJECTS = AboutDlg.o QuickTileViewerApp.o QuickTileViewerPrint.o ResizeDlg.o QuickTileViewerDlg.o wxSelectableBitmap.o
 
 CXX = $(shell $(WX_CONFIG) --cxx -ggdb)
 

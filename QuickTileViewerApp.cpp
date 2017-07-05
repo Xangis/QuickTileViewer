@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        PixelSwapperApp.cpp
+// Name:        QuickTileViewerApp.cpp
 // Purpose:     
 // Author:      Jason Champion
 // Modified by: 
@@ -24,7 +24,7 @@
 #include "wx/wx.h"
 #endif
 
-#include "PixelSwapperApp.h"
+#include "QuickTileViewerApp.h"
 
 DECLARE_APP(ExtractoSplitterApp)
 
@@ -53,7 +53,7 @@ bool ExtractoSplitterApp::OnInit()
 #if wxUSE_GIF
     wxImage::AddHandler(new wxGIFHandler);
 #endif
-    PixelSwapperDlg* mainWindow = new PixelSwapperDlg(NULL, ID_PIXELSWAPPER_DIALOG, _("Quick Tile Viewer"));
+    QuickTileViewerDlg* mainWindow = new QuickTileViewerDlg(NULL, ID_QuickTileViewer_DIALOG, _("Quick Tile Viewer"));
     mainWindow->Show(true);
 	if( argc > 1 )
 	{

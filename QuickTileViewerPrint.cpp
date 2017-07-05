@@ -1,6 +1,6 @@
-#include "PixelSwapperPrint.h"
+#include "QuickTileViewerPrint.h"
 
-bool PixelSwapperPrint::OnPrintPage(int page)
+bool QuickTileViewerPrint::OnPrintPage(int page)
 {
     wxDC *dc = GetDC();
     if (dc)
@@ -14,7 +14,7 @@ bool PixelSwapperPrint::OnPrintPage(int page)
         return false;
 }
 
-bool PixelSwapperPrint::OnBeginDocument(int startPage, int endPage)
+bool QuickTileViewerPrint::OnBeginDocument(int startPage, int endPage)
 {
     if (!wxPrintout::OnBeginDocument(startPage, endPage))
         return false;
@@ -22,7 +22,7 @@ bool PixelSwapperPrint::OnBeginDocument(int startPage, int endPage)
     return true;
 }
 
-void PixelSwapperPrint::GetPageInfo(int *minPage, int *maxPage, int *selPageFrom, int *selPageTo)
+void QuickTileViewerPrint::GetPageInfo(int *minPage, int *maxPage, int *selPageFrom, int *selPageTo)
 {
     *minPage = 1;
     *maxPage = 1;
@@ -30,12 +30,12 @@ void PixelSwapperPrint::GetPageInfo(int *minPage, int *maxPage, int *selPageFrom
     *selPageTo = 1;
 }
 
-bool PixelSwapperPrint::HasPage(int pageNum)
+bool QuickTileViewerPrint::HasPage(int pageNum)
 {
     return ( pageNum == 1 );
 }
 
-void PixelSwapperPrint::DrawPage(wxDC *dc)
+void QuickTileViewerPrint::DrawPage(wxDC *dc)
 {
     // You might use THIS code if you were scaling
     // graphics of known size to fit on the page.

@@ -57,10 +57,10 @@
 #define wxCLOSE_BOX 0x1000
 #endif
 
-class PixelSwapperDlg;
+class QuickTileViewerDlg;
 
 class ResizeDlg: public wxDialog
-{    
+{
     DECLARE_DYNAMIC_CLASS( ResizeDlg )
     DECLARE_EVENT_TABLE()
 
@@ -98,7 +98,7 @@ public:
     wxStaticText* _oldHeightText;
     wxTextCtrl* _txtWidth;
     wxTextCtrl* _txtHeight;
-	PixelSwapperDlg* _mainDlg;
+    QuickTileViewerDlg* _mainDlg;
     wxRadioButton* _radioReProportion;
     wxRadioButton* _radioCalcWidth;
     wxRadioButton* _radioCalcHeight;
