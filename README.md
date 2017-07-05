@@ -1,16 +1,24 @@
 # QuickTileViewer
 
-A tiled image viewer for Windows and Linux..
+A tiled image viewer for Windows and Linux.
 
 QuickTileViewer displays images in a tiled layout so you can see whether they'll 
-tile well. It was originally posted on http://zetacentauri.com and was 
-downloaded more than 9,000 times before being open-sourced.
+tile well. It is intended to be a useful tool for designers of graphics for 2D
+video games and will have limited usefulness for other users.
 
-![QuickTileViewer Screenshot](https://github.com/Xangis/QuickTileViewer/blob/master/images/QuickTileViewer.png)
+It was originally posted on http://zetacentauri.com and was downloaded more than 
+9,000 times before being open-sourced.
+
+![QuickTileViewer Screenshot](https://github.com/Xangis/QuickTileViewer/blob/master/images/QuickTileViewer1.1.png)
+
+For a more feature-rich image viewer and editor based on some of the same code,
+see PixelSwapper at:
+
+https://github.com/Xangis/PixelSwapper
 
 A prebuilt Windows installer is in the installer directory:
 
-https://github.com/Xangis/QuickTileViewer/blob/master/installer/QuickTileViewer1.1Setup.exe
+https://github.com/Xangis/QuickTileViewer/blob/master/installer/QuickTileViewer1.11Setup.exe
 
 It is written in C++ and uses wxWidgets for its user interface.
 
@@ -66,6 +74,8 @@ http://www.jrsoftware.org/isinfo.php
 ### Changes in Version 1.11
 
 - Updated wxWidgets libraries from 2.8 to 3.0.
+- Visual C++ redistributable included in Windows installer in case user doesn't already have it.
+- First open-source build.
 
 ### Changes in Version 1.1
 

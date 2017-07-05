@@ -23,7 +23,6 @@
 *.lib
 
 # Executables
-*.exe
 *.out
 *.app
 
@@ -40,3 +39,5 @@
 *.res
 ipch/
 *.suo
+QuickTileViewer.exe
+
