@@ -8,13 +8,13 @@
 class PixelSwapperPrint: public wxPrintout
 {
  public:
-  PixelSwapperPrint(wxChar *title = _T("PixelSwapper Printout")):wxPrintout(title) {}
+  PixelSwapperPrint(const wxChar *title = _("QuickTileViewer Printout")):wxPrintout(title) {}
   bool OnPrintPage(int page);
   bool HasPage(int page);
   bool OnBeginDocument(int startPage, int endPage);
   void GetPageInfo(int *minPage, int *maxPage, int *selPageFrom, int *selPageTo);
   void DrawPage(wxDC *dc);
-  void SetBitmap( wxBitmap& bitmap ) { _bitmap = bitmap; }
+  void SetBitmap( wxBitmap bitmap ) { _bitmap = bitmap; }
 private:
   wxBitmap _bitmap;
 };

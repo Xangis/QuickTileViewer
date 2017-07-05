@@ -209,8 +209,7 @@ void PixelSwapperDlg::CreateControls()
 	_mainSizer->Add(_statusBar, 0, wxGROW|wxALL, 0 );
 
 	_helpCtrl = new wxHtmlHelpController(wxHF_CONTENTS);
-	wxStandardPaths paths;
-	wxString filename = paths.GetDataDir() + "\\quicktileviewer.htb";
+	wxString filename = wxStandardPaths::Get().GetDataDir() + "\\quicktileviewer.htb";
 	if( !_helpCtrl->AddBook(filename))
 	{
 		wxMessageBox( "Unable to load help file.  Please make sure that quicktileviewer.htb is in the program directory." );
@@ -246,7 +245,7 @@ void PixelSwapperDlg::OnTxtThresholdUpdated( wxCommandEvent& event )
 
 void PixelSwapperDlg::OnBtnBrowseinputClick( wxCommandEvent& event )
 {
-	wxFileDialog fdialog( NULL, _T("Choose a file"), _T("."), _T(""), _T("All Supported File Types|*.bmp;*.gif;*.ico;*.jpg;*.jpeg;*.pcx;*.png;*.tga;*.tif;*.tiff;*.xpm;*.BMP;*.GIF;*.ICO;*.JPG;*.JPEG;*.PCX;*.PNG;*.TGA;*.TIF;*.TIFF;*.XPM|BMP Files (*.bmp)|*.bmp;*.BMP|GIF Files (*.gif)|*.gif;*.GIF|Icon Files (*.ico)|*.ico;*.ICO|JPEG Files (*.jpg,*.jpeg)|*.jpg;*.jpeg;*.JPG;*.JPEG|PCX Files (*.pcx)|*.pcx;*.PCX|PNG Files (*.png)|*.png;*.PNG|TGA Files (*.tga)|*.tga;*.TGA|TIF Files (*.tif,*.tiff) |*.tif;*.tiff;*.TIF;*.TIFF|X Pixmap Files (*.xpm)|*.xpm;*.XPM||"), wxOPEN|wxCHANGE_DIR );
+	wxFileDialog fdialog( NULL, _T("Choose a file"), _T("."), _T(""), _T("All Supported File Types|*.bmp;*.gif;*.ico;*.jpg;*.jpeg;*.pcx;*.png;*.tga;*.tif;*.tiff;*.xpm;*.BMP;*.GIF;*.ICO;*.JPG;*.JPEG;*.PCX;*.PNG;*.TGA;*.TIF;*.TIFF;*.XPM|BMP Files (*.bmp)|*.bmp;*.BMP|GIF Files (*.gif)|*.gif;*.GIF|Icon Files (*.ico)|*.ico;*.ICO|JPEG Files (*.jpg,*.jpeg)|*.jpg;*.jpeg;*.JPG;*.JPEG|PCX Files (*.pcx)|*.pcx;*.PCX|PNG Files (*.png)|*.png;*.PNG|TGA Files (*.tga)|*.tga;*.TGA|TIF Files (*.tif,*.tiff) |*.tif;*.tiff;*.TIF;*.TIFF|X Pixmap Files (*.xpm)|*.xpm;*.XPM||"), wxFD_OPEN|wxFD_CHANGE_DIR );
 	wxString fileName;
 	if( fdialog.ShowModal() != wxID_OK )
 	{
@@ -261,7 +260,7 @@ void PixelSwapperDlg::OnBtnBrowseinputClick( wxCommandEvent& event )
 
 void PixelSwapperDlg::OnBtnBrowseoutputClick( wxCommandEvent& event )
 {
-	wxFileDialog fdialog( NULL, _T("Choose a file"), _T("."), _T(""), _T("BMP and GIF files (*.bmp;*.gif)|*.bmp;*.gif|BMP Files (*.bmp)|*.bmp|Icon Files (*.ico)|*.gif|JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|TIFF Files (*.tif) |*.tif|X Pixmap Files (*.xpm)|*.xpm|"), wxSAVE|wxCHANGE_DIR );
+	wxFileDialog fdialog( NULL, _T("Choose a file"), _T("."), _T(""), _T("BMP and GIF files (*.bmp;*.gif)|*.bmp;*.gif|BMP Files (*.bmp)|*.bmp|Icon Files (*.ico)|*.gif|JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|TIFF Files (*.tif) |*.tif|X Pixmap Files (*.xpm)|*.xpm|"), wxFD_SAVE|wxFD_CHANGE_DIR );
 	wxString fileName;
 	if( fdialog.ShowModal() != wxID_OK )
 	{
@@ -354,6 +353,19 @@ void PixelSwapperDlg::OnBtnFilePaste( wxCommandEvent& event )
 	}
 }
 
+void PixelSwapperDlg::ProcessResize(int x, int y)
+{
+        if( x == 0 || y == 0 )
+        {
+                return;
+        }
+        if( _currentImage.Ok() )
+        {
+                _currentImage = _currentImage.Rescale( x, y );
+        PlaceImageInWindow();
+        }
+}
+
 void PixelSwapperDlg::OnBtnRotateClick( wxCommandEvent& event )
 {
 	if( _currentImage.Ok() )
@@ -374,8 +386,7 @@ void PixelSwapperDlg::OnBtnRotateRightClick( wxMouseEvent& event )
     event.Skip(false);
 }
 
-// Cheesedickery!
-void PixelSwapperDlg::LoadFile(wxString& filename )
+void PixelSwapperDlg::LoadFile(wxString filename )
 {
 	_statusBar->SetStatusText( filename, 0 );
 	wxCommandEvent nullEvent;

@@ -111,8 +111,9 @@ public:
 	void OnBtnHelpClick( wxCommandEvent& event );
     void OnBtnBrowseoutputClick( wxCommandEvent& event );
 	void OnBtnFilePaste( wxCommandEvent& event );
-	void LoadFile(wxString& filename);
+	void LoadFile(wxString filename);
     void OnTxtThresholdUpdated( wxCommandEvent& event );
+    void ProcessResize(int x, int y);
     void OnPageSetup(wxCommandEvent& event);
     void OnPrint(wxCommandEvent& event);
     void OnPrintPreview(wxCommandEvent& event);
