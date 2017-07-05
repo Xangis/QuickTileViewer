@@ -63,6 +63,10 @@ http://www.jrsoftware.org/isinfo.php
 
 # Changelog
 
+### Changes in Version 1.11
+
+- Updated wxWidgets libraries from 2.8 to 3.0.
+
 ### Changes in Version 1.1
 
 - Added support for loading PCX images.
