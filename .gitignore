@@ -41,3 +41,5 @@ ipch/
 *.suo
 QuickTileViewer.exe
 
+.vs/
+Debug/

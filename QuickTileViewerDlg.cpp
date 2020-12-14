@@ -318,12 +318,12 @@ void QuickTileViewerDlg::OnBtnAboutClick( wxCommandEvent& event )
 	// Show about box.
     wxAboutDialogInfo info;
     info.SetName(_("QuickTileViewer"));
-    info.SetVersion(_("1.11"));
-    info.SetCopyright(_("(c) 2006-2017 Jason Champion"));
+    info.SetVersion(_("1.2"));
+    info.SetCopyright(_("(c) 2006-2020 Jason Champion"));
 	info.AddDeveloper(_("Jason Champion"));
 	info.SetIcon(_icon);
 	info.SetLicense(_("QuickTileViewer is free software and may be distributed freely under the terms of the MIT license."));
-	info.SetWebSite(_("https://github.com/Xangis/QuickTileViewer"));
+	info.SetWebSite(_("https://lambdacentauri.com/software_quicktileviewer.htm"));
 	info.SetDescription(_("QuickTileViewer uses the wxWidgets libraries."));
 
     wxAboutBox(info);

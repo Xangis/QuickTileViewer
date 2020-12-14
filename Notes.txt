@@ -1,0 +1,46 @@
+Changes in version 1.2:
+
+Now uses the wxWidgets 3.1.4 libraries. Was using 3.0.2.
+
+(Changes in possibly unreleased version 1.11):
+
+[[[ Relevant changes from PixelSwapper to check and possibly port over]]]
+
+Changes in version 1.21:
+
+Fixed a bug with file type selection in the "Save As" dialog.
+Filename now shows up in the window title when a file is opened.
+A thumbnail of the currently open file is now used as the window icon.
+
+Changes in version 1.2:
+
+Added support for saving and loading PNM images.
+Added support for loading IFF images.
+Changed some keyboard shortcuts to more closely match common Windows application shortcuts
+
+Changes in version 1.11:
+
+Improved spacing of size indicators on the status bar.
+
+Changes in version 1.1:
+Added ability to convert an image to grayscale.
+Some user interface improvements.
+
+[[[ End changes from PixelSwapper ]]]
+
+Changes in version 1.1:
+
+Added support for loading PCX images.
+Added support for loading TGA images.
+
+TODO:
+
+[1.0] 1. Remove autoscaling for large images.
+[1.0] 2. Only show four tiles if they're really big.
+[2.0] 3. Add "render sphere" button to render the texture on a sphere.
+   -- Add slider to affect number of times texture is tiled on sphere.
+[2.0] 4. Add "render cube" button to render the texture on a cube.
+   -- Add slider to affect number of times texture is tiled on cube.
+[2.0] 5. Use MilkShape 3D format for rendering.
+   -- Allow rotation of object using mouse.
+[1.0] 6. Update help file to only show things relevant to this app.
