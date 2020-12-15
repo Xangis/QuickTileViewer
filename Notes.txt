@@ -35,6 +35,8 @@ Added support for loading TGA images.
 
 TODO:
 
+Make sure app is DPI aware.
+
 [1.0] 1. Remove autoscaling for large images.
 [1.0] 2. Only show four tiles if they're really big.
 [2.0] 3. Add "render sphere" button to render the texture on a sphere.
